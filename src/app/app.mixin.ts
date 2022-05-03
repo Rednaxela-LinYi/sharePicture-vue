@@ -30,11 +30,13 @@ const setTitle = (vm: ComponentPublicInstance) => {
  * 标题混合
  */
 export const titleMixin: ComponentOptions = {
-  created() {
+  setup() {
     setTitle(this);
   },
-
-  updated() {
-    setTitle(this);
-  },
+  // created() {
+  //   setTitle(this);
+  // },
+  // updated() {
+  //   setTitle(this);
+  // },
 };
