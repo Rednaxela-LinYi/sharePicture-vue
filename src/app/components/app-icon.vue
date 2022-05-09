@@ -42,7 +42,7 @@ export default defineComponent({
     },
 
     appIconStyles() {
-      return `color:${this.color};font-size:${this.size}px`;
+      return `color:${this.color};font-size:${this.size}px;width:${this.size}px`;
     },
   },
 
