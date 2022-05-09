@@ -1,0 +1,49 @@
+.page{
+  display:grid;
+  grid-template-rows: 66px 1fr;
+  grid-template-columns:96px 1fr;
+  grid-template-areas:
+  'a h'
+  'a m';
+  height: 100vh;
+  overflow: auto;
+  box-sizing: border-box;
+}
+  
+.page-header{
+  grid-area: h;
+  display:flex;
+  padding: 8px 32px;
+  position:sticky;
+  top: 0;
+  z-index:9999;
+  border: 2px solid orange;
+}
+
+.page-header > .container{
+  position: relative;
+  display:flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid orange;
+}
+
+.page-aside{
+  grid-area:a;
+  display:flex;
+  justify-content:center;
+  padding: 32px;
+  position:sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 9999;
+  box-sizing:border-box;
+  border: 2px solid skyblue;
+}
+
+.page-main {
+  grid-area:m;
+  padding: 32px;
+  border: 2px solid black;
+}

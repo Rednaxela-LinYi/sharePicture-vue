@@ -1,5 +1,8 @@
 {
   "editor.formatOnSave": true,
+  "path-intellisense.mappings": {
+    "@": "${workspaceRoot}/src"
+  },
   "typescript.preferences.importModuleSpecifier": "relative",
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

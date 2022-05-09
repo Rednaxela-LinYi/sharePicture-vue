@@ -1,0 +1,16 @@
+.app-sidebar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid skyblue;
+
+}
+
+.app-sidebar-item{
+  margin-top:32px;
+}
+
+.app-sidebar-item > .link{
+  text-decoration: none;
+  display: inline-block;
+}
