@@ -1,8 +1,6 @@
 <template>
-  <div class="app-sidebar-item add">
-    <router-link class="link" to="/">
-      <AppIcon size="22" name="add_a_photo"></AppIcon>
-    </router-link>
+  <div class="app-sidebar-item add pointer">
+    <AppIcon size="22" name="add_a_photo"></AppIcon>
   </div>
 </template>
 

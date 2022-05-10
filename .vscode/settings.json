@@ -3,7 +3,12 @@
   "path-intellisense.mappings": {
     "@": "${workspaceRoot}/src"
   },
+
   "typescript.preferences.importModuleSpecifier": "relative",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

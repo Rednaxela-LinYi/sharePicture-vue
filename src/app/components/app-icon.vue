@@ -4,6 +4,7 @@
 
 <script>
 import { defineComponent } from 'vue';
+import { mapGetters } from 'vuex';
 
 export default defineComponent({
   name: 'AppIcon',
@@ -22,7 +23,6 @@ export default defineComponent({
     },
     color: {
       type: [String],
-      default: '#000000',
     },
   },
 
@@ -37,12 +37,20 @@ export default defineComponent({
    * 计算属性
    */
   computed: {
+    ...mapGetters({
+      theme: 'layout/theme',
+    }),
     appIconClasses() {
       return ['app-icon'];
     },
-
     appIconStyles() {
-      return `color:${this.color};font-size:${this.size}px;width:${this.size}px`;
+      let color;
+      if (!this.color) {
+        color = this.theme === 'dark' ? '#585858' : '#000000';
+      } else {
+        color = this.color;
+      }
+      return `color:${color};font-size:${this.size}px;width:${this.size}px`;
     },
   },
 

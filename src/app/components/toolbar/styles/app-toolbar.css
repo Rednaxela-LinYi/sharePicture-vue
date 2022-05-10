@@ -1,9 +1,8 @@
 .app-toolbar {
   display: flex;
   flex-direction: row;
-  border: 1px solid orange;
 }
 
-.app-toolbar > .app-toolbar-item{
-  margin-left:30px;
+.app-toolbar > .app-toolbar-item {
+  margin-left: 30px;
 }

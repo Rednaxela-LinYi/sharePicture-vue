@@ -1,23 +1,15 @@
 <template>
-  <div :class="['page', theme]">
-    <PageAside></PageAside>
-    <PageHeader></PageHeader>
-    <div class="page-main">
-      <slot> </slot>
-    </div>
+  <div class="app-sidebar-item theme bottom pointer">
+    <AppIcon :name="themeIconName" @click="toggleTheme"></AppIcon>
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import { mapGetters, mapMutations } from 'vuex';
-import { getStorages } from '@/app/app.service';
-
-import PageAside from './components/page-aside.vue';
-import PageHeader from './components/page-header.vue';
-
+import AppIcon from '@/app/components/app-icon.vue';
 export default defineComponent({
-  name: 'AppLayout',
+  name: 'AppSidebarItemTheme',
 
   /**
    * 属性
@@ -38,16 +30,17 @@ export default defineComponent({
     ...mapGetters({
       theme: 'layout/theme',
     }),
+
+    themeIconName() {
+      return this.theme === 'light' ? 'wb_incandescent' : 'wb_sunny';
+    },
   },
 
   /**
    * 已创建
    */
   created() {
-    const theme = getStorages('theme');
-    if (theme) {
-      this.setTheme(theme);
-    }
+    //
   },
 
   /**
@@ -57,16 +50,21 @@ export default defineComponent({
     ...mapMutations({
       setTheme: 'layout/setTheme',
     }),
+    toggleTheme() {
+      const nextTheme = this.theme === 'light' ? 'dark' : 'light';
+      this.setTheme(nextTheme);
+    },
   },
 
   /**
    * 使用组件
    */
   components: {
-    PageHeader,
-    PageAside,
+    AppIcon,
   },
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+@import './styles/app-sidebar-item-theme.css';
+</style>

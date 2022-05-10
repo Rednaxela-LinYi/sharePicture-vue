@@ -1,5 +1,5 @@
 <template>
-  <div class="app-sidebar-item brand">
+  <div class="app-sidebar-item brand pointer">
     <router-link class="link" to="/">
       <AppLogo size="22"></AppLogo>
     </router-link>

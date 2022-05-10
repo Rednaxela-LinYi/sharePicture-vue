@@ -10,3 +10,8 @@ select {
 label {
   margin-left: 4px;
 }
+
+.pointer {
+  user-select: none;
+  cursor: pointer;
+}

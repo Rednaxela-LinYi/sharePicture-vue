@@ -1,16 +1,19 @@
-.app-sidebar{
+.app-sidebar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid skyblue;
-
+  height: 100%;
 }
 
-.app-sidebar-item{
-  margin-top:32px;
+.app-sidebar-item {
+  margin-top: 32px;
 }
 
-.app-sidebar-item > .link{
+.app-sidebar-item > .link {
   text-decoration: none;
   display: inline-block;
+}
+
+.app-sidebar-item.bottom {
+  order: 9999;
 }

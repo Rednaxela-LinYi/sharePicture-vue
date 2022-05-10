@@ -1,8 +1,6 @@
 <template>
-  <div class="app-sidebar-item popular">
-    <router-link class="link" to="/">
-      <AppIcon size="26" name="local_fire_department"> </AppIcon>
-    </router-link>
+  <div class="app-sidebar-item popular pointer">
+    <AppIcon size="26" name="local_fire_department"> </AppIcon>
   </div>
 </template>
 
