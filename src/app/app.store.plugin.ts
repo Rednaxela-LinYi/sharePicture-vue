@@ -7,6 +7,9 @@ export const localStorageStorePlugin: Plugin<RootState> = (store) => {
       case 'layout/setTheme':
         setStorages('theme', mutation.payload);
         break;
+      case 'auth/login/setResponseData':
+        setStorages('spv-token', mutation.payload.token);
+        break;
     }
   });
 };

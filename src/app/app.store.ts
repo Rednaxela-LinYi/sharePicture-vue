@@ -1,10 +1,16 @@
 import { createStore } from 'vuex';
 import { postStoreModule, PostStoreState } from '../post/post.store';
-import { layoutStoreModule } from '@/app/components/layout/layout.store';
+import {
+  layoutStoreModule,
+  LayoutStoreState,
+} from '@/app/components/layout/layout.store';
 import { localStorageStorePlugin } from '@/app/app.store.plugin';
+import { authStoreModule, AuthStoreState } from '../auth/auth.store';
 export interface RootState {
   appName: string;
   post: PostStoreState;
+  layout: LayoutStoreState;
+  auth: AuthStoreState;
 }
 
 /**
@@ -18,6 +24,7 @@ const store = createStore({
   modules: {
     post: postStoreModule,
     layout: layoutStoreModule,
+    auth: authStoreModule,
   },
   plugins: [localStorageStorePlugin],
 });

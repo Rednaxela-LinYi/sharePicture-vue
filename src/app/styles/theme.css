@@ -11,8 +11,12 @@
   --light-text-color: #adadad;
 
   /*line*/
-  --line-color: #ele3e7;
+  --line-color: #e1e3e7;
   --highlight-line-color: #000000;
+
+  /*button*/
+  --primary-button-background: #000000;
+  --outline-button-color: #000000;
 }
 
 .page.dark {
@@ -30,4 +34,8 @@
   /*line*/
   --line-color: #383838;
   --highlight-line-color: #555555;
+
+  /*button*/
+  --primary-button-background: #555555;
+  --outline-button-color: #555555;
 }
