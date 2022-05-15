@@ -6,11 +6,16 @@ import {
 } from '@/app/components/layout/layout.store';
 import { localStorageStorePlugin } from '@/app/app.store.plugin';
 import { authStoreModule, AuthStoreState } from '../auth/auth.store';
+import {
+  appNotificationStoreModule,
+  AppNotificationStoreState,
+} from './components/notification/app-notification.store';
 export interface RootState {
   appName: string;
   post: PostStoreState;
   layout: LayoutStoreState;
   auth: AuthStoreState;
+  notification: AppNotificationStoreState;
 }
 
 /**
@@ -25,6 +30,7 @@ const store = createStore({
     post: postStoreModule,
     layout: layoutStoreModule,
     auth: authStoreModule,
+    notification: appNotificationStoreModule,
   },
   plugins: [localStorageStorePlugin],
 });

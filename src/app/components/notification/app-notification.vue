@@ -1,0 +1,65 @@
+<template>
+  <div class="app-notification">
+    <transition-group name="app-notification-message">
+      <AppNotificationMessage
+        v-for="message in messages"
+        :key="message.id"
+        :message="message"
+      ></AppNotificationMessage>
+    </transition-group>
+  </div>
+</template>
+
+<script>
+import { defineComponent } from 'vue';
+import AppNotificationMessage from './components/app-notification-message.vue';
+import { mapGetters } from 'vuex';
+
+export default defineComponent({
+  name: 'AppNotification',
+
+  /**
+   * 属性
+   */
+  props: {},
+
+  /**
+   * 数据
+   */
+  data() {
+    return {};
+  },
+
+  /**
+   * 计算属性
+   */
+  computed: {
+    ...mapGetters({
+      messages: 'notification/messages',
+    }),
+  },
+
+  /**
+   * 已创建
+   */
+  created() {
+    //
+  },
+
+  /**
+   * 组件方法
+   */
+  methods: {},
+
+  /**
+   * 使用组件
+   */
+  components: {
+    AppNotificationMessage,
+  },
+});
+</script>
+
+<style scoped>
+@import './styles/app-notification.css';
+</style>

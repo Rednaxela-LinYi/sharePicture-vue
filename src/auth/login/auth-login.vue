@@ -54,6 +54,7 @@ export default defineComponent({
   methods: {
     ...mapActions({
       login: 'auth/login/login',
+      pushMessage: 'notification/pushMessage',
     }),
     async loginHandler() {
       try {
@@ -62,8 +63,13 @@ export default defineComponent({
           password: this.password,
         });
         console.log(response);
+        this.pushMessage({
+          content: `欢迎回来，${this.name}`,
+        });
       } catch (error) {
-        console.log(error);
+        this.pushMessage({
+          content: error.data?.message,
+        });
       }
     },
   },

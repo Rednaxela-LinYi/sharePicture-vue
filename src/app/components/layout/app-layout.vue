@@ -5,6 +5,7 @@
     <div class="page-main">
       <slot> </slot>
     </div>
+    <AppNotification></AppNotification>
   </div>
 </template>
 
@@ -15,7 +16,7 @@ import { getStorages } from '@/app/app.service';
 
 import PageAside from './components/page-aside.vue';
 import PageHeader from './components/page-header.vue';
-
+import AppNotification from '@/app/components/notification/app-notification.vue';
 export default defineComponent({
   name: 'AppLayout',
 
@@ -65,6 +66,7 @@ export default defineComponent({
   components: {
     PageHeader,
     PageAside,
+    AppNotification,
   },
 });
 </script>
