@@ -1,0 +1,28 @@
+.user-avatar img {
+  border-radius: 50%;
+  user-select: none;
+}
+
+.user-avatar.small img {
+  width: 32px;
+  height: 32px;
+}
+
+.user-avatar.medium img {
+  width: 48px;
+  height: 48px;
+}
+
+.user-avatar.large img {
+  width: 64px;
+  height: 64px;
+}
+
+.user-avatar.fade {
+  opacity: 0.3;
+}
+
+.user-avatar.fade img {
+  width: 32px;
+  height: 32px;
+}

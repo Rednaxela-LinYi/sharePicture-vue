@@ -18,9 +18,11 @@ export default {
   methods: {
     ...mapMutations({
       setToken: 'auth/setToken',
+      setCurrentUser: 'user/setCurrentUser',
     }),
     ...mapActions({
       configApiHttpClientAuthHeader: 'auth/configApiHttpClientAuthHeader',
+      updateCurrentUserById: 'user/updateCurrentUserById',
     }),
   },
 
@@ -36,9 +38,13 @@ export default {
 
   created() {
     let token = getStorages('spv-token');
+    let userId = getStorages('spv-uid');
     if (token) {
       this.setToken(getStorages('spv-token'));
       this.configApiHttpClientAuthHeader(token);
+    }
+    if (userId) {
+      this.updateCurrentUserById(userId);
     }
   },
 };

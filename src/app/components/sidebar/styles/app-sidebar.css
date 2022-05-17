@@ -7,6 +7,11 @@
 
 .app-sidebar-item {
   margin-top: 32px;
+  order: 10;
+}
+
+.app-sidebar-item.brand {
+  order: 1;
 }
 
 .app-sidebar-item > .link {

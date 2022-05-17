@@ -1,7 +1,7 @@
 import { Module } from 'vuex';
 import { RootState } from '@/app/app.store';
 import { apiHttpClient } from '@/app/app.service';
-import { API_BASE_URL } from '../../app/app.config';
+import { API_BASE_URL } from '@/app/app.config';
 
 export interface LoginResponseData {
   id: number;
@@ -68,6 +68,9 @@ export const authLoginStoreModule: Module<AuthLoginStoreState, RootState> = {
         commit('setLoading', false);
         commit('auth/setToken', response.data.token, { root: true });
         dispatch('auth/configApiHttpClientAuthHeader', response.data.token, {
+          root: true,
+        });
+        dispatch('user/updateCurrentUserById', response.data.id, {
           root: true,
         });
         return response;

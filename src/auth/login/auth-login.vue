@@ -66,6 +66,7 @@ export default defineComponent({
         this.pushMessage({
           content: `欢迎回来，${this.name}`,
         });
+        this.$router.back();
       } catch (error) {
         this.pushMessage({
           content: error.data?.message,

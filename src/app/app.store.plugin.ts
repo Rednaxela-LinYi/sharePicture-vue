@@ -9,6 +9,7 @@ export const localStorageStorePlugin: Plugin<RootState> = (store) => {
         break;
       case 'auth/login/setResponseData':
         setStorages('spv-token', mutation.payload.token);
+        setStorages('spv-uid', mutation.payload.id);
         break;
     }
   });
