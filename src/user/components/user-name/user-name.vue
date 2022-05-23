@@ -1,25 +1,24 @@
 <template>
-  <div class="app-sidebar-item avatar">
-    <UserAvatar
-      sizeType="medium"
-      link="userShow"
-      :user="getCurrentUser"
-    ></UserAvatar>
+  <div class="user-name">
+    {{ userName }}
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import { mapGetters } from 'vuex';
-import UserAvatar from '@/user/components/user-avatar/user-avatar.vue';
 
 export default defineComponent({
-  name: 'AppSidebarItemAvatar',
+  name: 'UserName',
 
   /**
    * 属性
    */
-  props: {},
+  props: {
+    user: {
+      type: Object,
+      default: null,
+    },
+  },
 
   /**
    * 数据
@@ -32,9 +31,9 @@ export default defineComponent({
    * 计算属性
    */
   computed: {
-    ...mapGetters({
-      getCurrentUser: 'user/getCurrentUser',
-    }),
+    userName() {
+      return this.user?.name || '';
+    },
   },
 
   /**
@@ -52,9 +51,7 @@ export default defineComponent({
   /**
    * 使用组件
    */
-  components: {
-    UserAvatar,
-  },
+  components: {},
 });
 </script>
 

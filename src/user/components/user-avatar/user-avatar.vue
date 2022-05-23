@@ -27,7 +27,7 @@ export default defineComponent({
       default: 'small',
     },
     size: {
-      type: Number,
+      type: String,
       default: null,
     },
     link: {
@@ -54,7 +54,7 @@ export default defineComponent({
       if (this.user && this.user.avatar) {
         return `${API_BASE_URL}/users/${this.user.id}/avatar?size=${this.sizeType}`;
       } else {
-        return 'icons/account-black-32px.svg';
+        return '/icons/account-black-32px.svg';
       }
     },
     userAvatarClasses() {
@@ -73,11 +73,22 @@ export default defineComponent({
     },
 
     linkTo() {
-      if (this.link) {
-        return `${window.location}/${this.link}`;
+      let link;
+      if (!this.isLoggedIn) {
+        link = {
+          name: 'login',
+        };
+      } else if (this.isLoggedIn && this.user && this.link === 'userShow') {
+        link = {
+          name: 'userShow',
+          params: {
+            userId: this.user.id,
+          },
+        };
       } else {
-        return '';
+        link = '/';
       }
+      return link;
     },
   },
 
