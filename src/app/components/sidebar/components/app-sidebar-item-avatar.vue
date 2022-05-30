@@ -3,6 +3,7 @@
     <UserAvatar
       sizeType="medium"
       link="userShow"
+      :avatarSource="avatarSource"
       :user="getCurrentUser"
     ></UserAvatar>
   </div>
@@ -15,25 +16,14 @@ import UserAvatar from '@/user/components/user-avatar/user-avatar.vue';
 
 export default defineComponent({
   name: 'AppSidebarItemAvatar',
-
-  /**
-   * 属性
-   */
   props: {},
-
-  /**
-   * 数据
-   */
   data() {
     return {};
   },
-
-  /**
-   * 计算属性
-   */
   computed: {
     ...mapGetters({
       getCurrentUser: 'user/getCurrentUser',
+      avatarSource: 'user/account/getAvatarSource',
     }),
   },
 
@@ -44,6 +34,9 @@ export default defineComponent({
     //
   },
 
+  unmounted() {
+    console.log('销毁');
+  },
   /**
    * 组件方法
    */

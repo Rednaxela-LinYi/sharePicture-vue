@@ -2,14 +2,18 @@
   <div class="user-show">
     <div class="header">
       <div class="item">
-        <UserAvatar size="128" :user="currentUser"></UserAvatar>
+        <UserAvatar
+          size="128"
+          :user="visitedUser"
+          :avatarSource="avatarSource"
+        ></UserAvatar>
       </div>
       <div class="item">
-        <UserName :user="currentUser"></UserName>
+        <UserName :user="visitedUser"></UserName>
       </div>
     </div>
     <div class="content-tab">
-      <UserShowMenu></UserShowMenu>
+      <UserShowMenu :user="visitedUser"></UserShowMenu>
     </div>
     <div class="content">
       <router-view></router-view>
@@ -19,7 +23,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import UserAvatar from '@/user/components/user-avatar/user-avatar.vue';
 import UserName from '@/user/components/user-name/user-name.vue';
 import UserShowMenu from '@/user/show/components/user-show-menu.vue';
@@ -35,6 +39,12 @@ export default defineComponent({
     },
   },
 
+  watch: {
+    userId() {
+      console.log('change');
+      this.getUserById(this.userId);
+    },
+  },
   /**
    * 数据
    */
@@ -47,8 +57,9 @@ export default defineComponent({
    */
   computed: {
     ...mapGetters({
-      isLoggedIn: 'auth/isLoggedIn',
+      visitedUser: 'user/show/getUser',
       currentUser: 'user/getCurrentUser',
+      avatarSource: 'user/account/getAvatarSource',
     }),
   },
 
@@ -56,15 +67,21 @@ export default defineComponent({
    * 已创建
    */
   created() {
-    // if (!this.isLoggedIn || this.getCurrentUser?.id !== this.userId) {
-    //   this.$router.back();
-    // }
+    console.log('show page ', this.userId);
+    this.getUserById(this.userId);
   },
 
+  unmounted() {
+    console.log('show销毁');
+  },
   /**
    * 组件方法
    */
-  methods: {},
+  methods: {
+    ...mapActions({
+      getUserById: 'user/show/getUserById',
+    }),
+  },
 
   /**
    * 使用组件

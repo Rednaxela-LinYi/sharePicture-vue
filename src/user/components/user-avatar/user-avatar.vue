@@ -1,16 +1,23 @@
 <template>
   <div :class="userAvatarClasses">
     <router-link :to="linkTo" v-if="link">
-      <img :src="userAvatarSource" :style="userAvatarInlineStyle" />
+      <img
+        :src="avatarSource || userAvatarSource"
+        :style="userAvatarInlineStyle"
+      />
     </router-link>
-    <img v-else :src="userAvatarSource" :style="userAvatarInlineStyle" />
+    <img
+      v-else
+      :src="avatarSource || userAvatarSource"
+      :style="userAvatarInlineStyle"
+    />
   </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import { API_BASE_URL } from '@/app/app.config';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default defineComponent({
   name: 'UserAvatar',
 
@@ -20,7 +27,6 @@ export default defineComponent({
   props: {
     user: {
       type: Object,
-      default: null,
     },
     sizeType: {
       type: String,
@@ -31,6 +37,10 @@ export default defineComponent({
       default: null,
     },
     link: {
+      type: String,
+      default: '',
+    },
+    avatarSource: {
       type: String,
       default: '',
     },
@@ -49,10 +59,13 @@ export default defineComponent({
   computed: {
     ...mapGetters({
       isLoggedIn: 'auth/isLoggedIn',
+      getCurrentUser: 'user/getCurrentUser',
     }),
     userAvatarSource() {
       if (this.user && this.user.avatar) {
-        return `${API_BASE_URL}/users/${this.user.id}/avatar?size=${this.sizeType}`;
+        return `${API_BASE_URL}/users/${parseInt(this.user?.id)}/avatar?size=${
+          this.sizeType
+        }`;
       } else {
         return '/icons/account-black-32px.svg';
       }
@@ -82,7 +95,7 @@ export default defineComponent({
         link = {
           name: 'userShow',
           params: {
-            userId: this.user.id,
+            userId: parseInt(this.user?.id),
           },
         };
       } else {
@@ -102,7 +115,11 @@ export default defineComponent({
   /**
    * 组件方法
    */
-  methods: {},
+  methods: {
+    ...mapActions({
+      getUserById: 'user/show/getUserById',
+    }),
+  },
 
   /**
    * 使用组件

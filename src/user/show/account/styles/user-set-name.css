@@ -1,0 +1,15 @@
+.user-set-name {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-set-name > .item {
+  margin-right: 50px;
+  flex-grow: 1;
+}
+
+.user-set-name > .validate-password,
+.user-set-name > .new-user-name {
+  flex-basis: 200%;
+  flex-grow: 2;
+}

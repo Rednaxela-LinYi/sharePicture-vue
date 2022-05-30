@@ -1,8 +1,18 @@
 import { Module } from 'vuex';
 import { RootState } from '@/app/app.store';
-import { User, userShowStoreModule } from './show/user-show.store';
+import {
+  User,
+  userShowStoreModule,
+  UserShowStoreState,
+} from './show/user-show.store';
+import {
+  userAccountStoreModule,
+  UserAccountStoreState,
+} from './show/account/user-account.store';
 export interface UserStoreState {
   currentUser: User | null;
+  show: UserShowStoreState;
+  account: UserAccountStoreState;
 }
 
 export const userStoreModule: Module<UserStoreState, RootState> = {
@@ -51,5 +61,6 @@ export const userStoreModule: Module<UserStoreState, RootState> = {
 
   modules: {
     show: userShowStoreModule,
+    account: userAccountStoreModule,
   },
 };

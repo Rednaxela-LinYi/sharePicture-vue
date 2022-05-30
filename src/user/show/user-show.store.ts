@@ -37,7 +37,11 @@ export const userShowStoreModule: Module<UserShowStoreState, RootState> = {
   /**
    * 获取器
    */
-  getters: {},
+  getters: {
+    getUser(state) {
+      return state.user;
+    },
+  },
 
   /**
    * 修改器

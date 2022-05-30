@@ -6,7 +6,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-
+import { mapActions } from 'vuex';
 export default defineComponent({
   name: 'UserName',
 
@@ -16,7 +16,6 @@ export default defineComponent({
   props: {
     user: {
       type: Object,
-      default: null,
     },
   },
 
@@ -46,7 +45,11 @@ export default defineComponent({
   /**
    * 组件方法
    */
-  methods: {},
+  methods: {
+    ...mapActions({
+      getUserById: 'user/show/getUserById',
+    }),
+  },
 
   /**
    * 使用组件
