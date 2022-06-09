@@ -6,7 +6,7 @@
   font-weight: 300;
   color: var(--secondary-text-color);
   padding: 16px 24px;
-  /* background-color: var(--light-background); */
+  background-color: var(--primary-background);
   min-width: 280px;
   max-width: 280px;
   margin-bottom: 24px;

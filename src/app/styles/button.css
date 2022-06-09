@@ -9,3 +9,18 @@
 .button.large {
   padding: 14px 40px;
 }
+
+.button:active {
+  opacity: 0.8;
+}
+
+.button.outline {
+  background-color: none;
+  color: var(--primary-text-color);
+}
+
+.button.basic {
+  background-color: none;
+  border: none;
+  padding: 0;
+}

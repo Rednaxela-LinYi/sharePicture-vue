@@ -59,7 +59,7 @@ export const userAccountStoreModule: Module<UserAccountStoreState, RootState> =
      * 动作
      */
     actions: {
-      async postAvatar({ commit, dispatch }, data) {
+      async postAvatar({ commit }, data) {
         console.log('file', data?.file);
         commit('setLoading', true);
         const formData = new FormData();

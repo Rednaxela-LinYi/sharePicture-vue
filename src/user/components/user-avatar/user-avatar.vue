@@ -91,16 +91,19 @@ export default defineComponent({
         link = {
           name: 'login',
         };
-      } else if (this.isLoggedIn && this.user && this.link === 'userShow') {
+      } else if (this.isLoggedIn && this.user) {
         link = {
-          name: 'userShow',
+          name: this.link,
           params: {
             userId: parseInt(this.user?.id),
           },
         };
       } else {
-        link = '/';
+        link = {
+          name: 'home',
+        };
       }
+      console.log(link);
       return link;
     },
   },

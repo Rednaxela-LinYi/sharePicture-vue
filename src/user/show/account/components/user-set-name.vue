@@ -83,6 +83,7 @@ export default defineComponent({
           },
         });
         this.pushMessage({ content: '更改用户名成功' });
+        return response;
       } catch (err) {
         this.pushMessage({ content: '更改用户名失败' });
         throw err.response;

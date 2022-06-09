@@ -2,10 +2,18 @@
   <div class="app-sidebar-item avatar">
     <UserAvatar
       sizeType="medium"
-      link="userShow"
+      :link="userAvatarLink"
       :avatarSource="avatarSource"
-      :user="getCurrentUser"
+      :user="currentUser"
+      @click="toggleUserMenuDisplayStatus"
     ></UserAvatar>
+    <transition name="user-menu">
+      <UserMenu
+        @close="closeUserMenu"
+        v-if="isUserMenuShow"
+        class="user-menu"
+      ></UserMenu>
+    </transition>
   </div>
 </template>
 
@@ -13,42 +21,68 @@
 import { defineComponent } from 'vue';
 import { mapGetters } from 'vuex';
 import UserAvatar from '@/user/components/user-avatar/user-avatar.vue';
-
+import UserMenu from '@/user/components/user-menu.vue';
 export default defineComponent({
   name: 'AppSidebarItemAvatar',
   props: {},
   data() {
-    return {};
+    return {
+      isUserMenuShow: false,
+    };
   },
   computed: {
     ...mapGetters({
-      getCurrentUser: 'user/getCurrentUser',
+      currentUser: 'user/getCurrentUser',
       avatarSource: 'user/account/getAvatarSource',
     }),
+    userAvatarLink() {
+      return this.currentUser ? null : 'login';
+    },
   },
 
   /**
    * 已创建
    */
   created() {
-    //
+    document.addEventListener('keyup', this.closeUserMenuByKeyBoard);
   },
 
   unmounted() {
-    console.log('销毁');
+    document.removeEventListener('keyup', this.closeUserMenuByKeyBoard);
   },
   /**
    * 组件方法
    */
-  methods: {},
+  methods: {
+    toggleUserMenuDisplayStatus() {
+      if (this.currentUser?.id) {
+        this.isUserMenuShow = !this.isUserMenuShow;
+      } else {
+        this.isUserMenuShow = false;
+      }
+    },
+
+    closeUserMenu() {
+      this.isUserMenuShow = false;
+    },
+
+    closeUserMenuByKeyBoard(event) {
+      if (event.key === 'Escape') {
+        this.closeUserMenu();
+      }
+    },
+  },
 
   /**
    * 使用组件
    */
   components: {
     UserAvatar,
+    UserMenu,
   },
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+@import './styles/app-sidebar-item-avatar.css';
+</style>

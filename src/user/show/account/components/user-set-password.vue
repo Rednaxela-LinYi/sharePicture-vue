@@ -83,6 +83,7 @@ export default defineComponent({
           },
         });
         this.pushMessage({ content: '更改密码成功' });
+        return response;
       } catch (err) {
         this.pushMessage({ content: '更改密码失败' });
         throw err.response;

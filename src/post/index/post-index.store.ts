@@ -1,7 +1,12 @@
 import { Module } from 'vuex';
 import { apiHttpClient } from '../../app/app.service';
 import { RootState } from '../../app/app.store';
-import { PostItem } from '../post.store';
+
+export interface PostItem {
+  id: number;
+  title: string;
+  content: string;
+}
 
 export interface PostIndexStoreState {
   loading: boolean;

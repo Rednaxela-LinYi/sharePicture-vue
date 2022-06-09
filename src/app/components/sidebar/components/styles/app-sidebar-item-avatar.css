@@ -1,0 +1,31 @@
+.app-sidebar-item.avatar {
+  position: relative;
+}
+
+.app-sidebar-item.avatar .user-menu {
+  position: absolute;
+  right: -270px;
+  top: 0;
+}
+
+.user-menu-enter-active {
+  transform: translateX(-24px);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.user-menu-enter-to {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.user-menu-leave-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.user-menu-leave-to {
+  transform: translateX(-24px);
+  opacity: 0;
+}
