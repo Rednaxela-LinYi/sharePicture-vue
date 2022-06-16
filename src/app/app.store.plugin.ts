@@ -17,6 +17,9 @@ export const localStorageStorePlugin: Plugin<RootState> = (store) => {
         }
 
         break;
+      case 'post/index/setLayout':
+        setStorages('spv-post-list-layout', mutation.payload);
+        break;
     }
   });
 };

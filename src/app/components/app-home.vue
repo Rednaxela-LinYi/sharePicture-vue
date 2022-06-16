@@ -1,15 +1,17 @@
 <template>
-  <div>欢迎，您目前{{ isLoggedIn ? '已登录' : '未登录' }}</div>
-  <div>
-    <ButtonField @click="onClickPushMessage" text="推送消息" size="large">
-    </ButtonField>
-  </div>
+  <component :is="home"></component>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import ButtonField from '@/app/components/button-field.vue';
+import PostIndex from '@/post/index/post-index.vue';
 export default {
+  data() {
+    return {
+      home: 'PostIndex',
+    };
+  },
+
   computed: {
     ...mapGetters({
       isLoggedIn: 'auth/isLoggedIn',
@@ -29,7 +31,7 @@ export default {
     },
   },
   components: {
-    ButtonField,
+    PostIndex,
   },
 };
 </script>

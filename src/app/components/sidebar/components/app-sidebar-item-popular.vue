@@ -1,6 +1,8 @@
 <template>
   <div class="app-sidebar-item popular pointer">
-    <AppIcon size="26" name="local_fire_department"> </AppIcon>
+    <router-link class="link" :to="{ name: 'postIndexPopular' }">
+      <AppIcon size="26" name="local_fire_department"> </AppIcon>
+    </router-link>
   </div>
 </template>
 

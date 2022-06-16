@@ -6,8 +6,6 @@
     'a h'
     'a m';
   color: var(--primary-text-color);
-  height: 100vh;
-  overflow: auto;
   box-sizing: border-box;
 }
 
